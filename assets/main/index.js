@@ -48,23 +48,14 @@ setTimeout(typeEffect, 500); // Khởi động hiệu ứng sau 0.5s
 
 //Nhac nen
 let audio = document.getElementById("myAudio");
-    let toggleButton = document.getElementById("toggleSound");
+let toggleButton = document.getElementById("toggleSound");
 
-    // Kiểm tra trạng thái lưu trữ
-    if (localStorage.getItem("musicPlayed") === "true") {
+toggleButton.addEventListener("click", function () {
+    if (audio.paused) {
         audio.play();
-        toggleButton.innerHTML = `<i class="fa-solid fa-volume-high"></i>`; // Cập nhật icon loa bật
+        toggleButton.innerHTML = `<i class="fa-solid fa-volume-high"></i>`; // Icon loa bật
+    } else {
+        audio.pause();
+        toggleButton.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`; // Icon loa tắt
     }
-
-    // Hàm bật/tắt nhạc
-    toggleButton.addEventListener("click", function () {
-        if (audio.paused) {
-            audio.play();
-            localStorage.setItem("musicPlayed", "true");
-            toggleButton.innerHTML = `<i class="fa-solid fa-volume-high"></i>`; // Cập nhật icon loa bật
-        } else {
-            audio.pause();
-            localStorage.setItem("musicPlayed", "false");
-            toggleButton.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`; // Cập nhật icon loa tắt
-        }
-    });
+});

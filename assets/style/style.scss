@@ -1,0 +1,303 @@
+/*All color
+#ffffff – Trắng
+#5752ae – Tím đậm
+#dfeafc – Xanh nhạt
+#fffffe – Trắng gần như tuyệt đối
+#edebff – Tím nhạt
+#f8e9ff – Hồng nhạt
+#ffeaf3 – Hồng pastel
+#5752ad – Biến thể của tím đậm
+#5752ac – Biến thể khác của tím đậm
+#feffff – Gần như trắng
+*/
+
+//color
+// Màu chính
+$color-white: #ffffff;
+$color-off-white: #fffffe;
+$color-almost-white: #feffff;
+
+// Màu tím
+$color-purple-dark: #5752ae;
+$color-purple-dark-variant1: #5752ad;
+$color-purple-dark-variant2: #5752ac;
+$color-purple-light: #edebff;
+
+// Màu xanh
+$color-blue-light: #dfeafc;
+
+// Màu hồng
+$color-pink-light: #f8e9ff;
+$color-pink-pastel: #ffeaf3;
+
+.page__cover {
+    display: flex;
+    flex-direction: row;
+}
+
+#toggleSound {
+    bottom: 50px;
+    right: 120px;
+}
+
+.up__page {
+    bottom: 50px;
+    right: 50px;
+}
+
+.bottom-option-btn {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    background-color: $color-purple-dark;
+    color: $color-almost-white;
+    opacity: 0.6;
+
+    i {
+        font-size: 16px;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+
+//left nav
+.left__nav {
+    background-color: $color-purple-dark-variant2;
+    width: 300px;
+    height: 100vh;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+} 
+
+.left__nav .logo-page {
+    padding: 40px 0;
+        .title {
+            color: $color-white;
+            font-size: 30px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+}
+
+.left__nav .list__menu {
+    padding-left: 50px;
+    margin-top: 20px;
+    
+    i {
+        margin-right: 15px;
+    }
+    li.item {
+        color: $color-white;
+        padding: 20px 30px;
+        font-size: 17px;
+        text-transform: capitalize;
+        font-weight: 600;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        cursor: pointer;
+    }
+
+    li.active {
+        background-color: $color-blue-light;
+        color: $color-purple-dark-variant2;
+    }
+}
+
+.left__nav .pic__art {
+    img {
+        width: 100%;
+    }
+}
+
+.resume__content {
+    flex: 1;
+    background-color: $color-blue-light;
+    padding: 0 50px;
+}
+
+.resume__content .title-box {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-off-white;
+    h3 {
+        color: $color-purple-dark-variant2;
+        font-size: 30px;
+        margin: 30px 20px;
+        // text-transform: capitalize;
+        border-right: 3px solid $color-purple-dark-variant2; /* Giả lập con trỏ */
+        white-space: nowrap;
+        overflow: hidden;
+        width: fit-content;
+    }
+}
+
+.resume__content .more__option {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    input {
+        font-size: 18px;
+        line-height: 40px;
+        padding-left: 20px;
+        padding-right: 10px;
+        background-color: transparent;
+        max-width: 150px;
+        transition: all 0.3s ease-in-out;
+
+        &:focus {
+            max-width: 200px;
+        }
+    }
+
+    .search__btn {
+        width: 60px;
+        display: flex;
+        justify-content: right;
+    }
+
+    .search {
+        background-color: $color-purple-light;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    button {
+        height: 40px;
+        width: 40px;
+        background-color: $color-purple-dark-variant1;
+        border-radius: 50%;
+        color: $color-off-white;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            width: 60px;
+            border-radius: 20px;
+        }
+    }
+
+    .logout_icon {
+        margin-left: 30px;
+        cursor: pointer;
+        i {
+            color: #5752ad;
+            font-size: 25px;
+        }
+    }
+}
+
+.resume__content .main__content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    .primary__content {
+        flex: 1;
+        margin-right: 50px;
+    }
+
+    .ads__content {
+        width: 350px;
+        background-color: #edebff;
+    }
+}
+
+.primary__content .profile__inf {
+    display: flex;
+    justify-content: space-between;
+    background-color: $color-almost-white;
+    border-radius: 15px;
+    padding: 20px;
+    .avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: white;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .profile__inf_main {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    h3.name {
+        color: $color-purple-dark;
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+
+    .title_inf {
+        color: #6b6969;
+        padding: 15px 0;
+        font-weight: 600;
+        font-size: 18px;
+
+        span {
+            color: #5752ac;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    ul.social__list {
+        display: flex;
+        flex-direction: row;
+        padding: 7.5px 0 20px 0;
+
+        li.social__icon +  li.social__icon{
+            margin-left: 20px;
+        }
+
+        i {
+            color: $color-purple-dark;
+            font-size: 20px;
+        }
+    }
+
+    .my__inf {
+        margin-left: 70px;
+    }
+
+    .edit__icon {
+        i {
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.5;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

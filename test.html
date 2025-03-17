@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu ứng Typing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            color: white;
+        }
+        .typing-container {
+            font-size: 24px;
+            border-right: 3px solid white; /* Giả lập con trỏ */
+            white-space: nowrap;
+            overflow: hidden;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div class="typing-container" id="typing"></div>
+
+    <script>
+        const textArray = ["Xin chào, chào mừng bạn đã ghé thăm!",
+            "Hy vọng bạn sẽ có một ngày tuyệt vời!",
+            "Cảm ơn vì đã đến đây!",
+            "Chúc bạn một ngày tràn đầy năng lượng!",
+            "Chào mừng và tận hưởng khoảnh khắc này!"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 150; // Tốc độ gõ chữ
+        let deleteSpeed = 100; // Tốc độ xóa chữ
+        let delayBetweenWords = 500; // Thời gian chờ giữa các từ
+
+        function typeEffect() {
+            let typingElement = document.getElementById("typing");
+            let currentText = textArray[textIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex--);
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex++);
+            }
+
+            if (!isDeleting && charIndex > currentText.length) {
+                setTimeout(() => { isDeleting = true; typeEffect(); }, delayBetweenWords);
+                return;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textArray.length;
+            }
+
+            setTimeout(typeEffect, isDeleting ? deleteSpeed : typingSpeed);
+        }
+
+        setTimeout(typeEffect, 500); // Khởi động hiệu ứng sau 0.5s
+    </script>
+</body>
+</html>

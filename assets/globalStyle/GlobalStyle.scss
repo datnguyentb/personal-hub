@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    --white: $color-white ;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none; /* Loại bỏ viền mặc định */
+    border: none; /* Loại bỏ viền */
+    box-shadow: none; /* Loại bỏ hiệu ứng bóng */
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.snowflake {
+    position: fixed;
+    color: white;
+    user-select: none;
+    pointer-events: none;
+}
+
+

@@ -55,7 +55,13 @@ if (!iframe || !toggleButton) {
     return;
 }
 
-let songs = ["https://api.soundcloud.com/tracks/339979427"];
+let songs = [
+    "https://api.soundcloud.com/tracks/339979427",
+    "https://api.soundcloud.com/tracks/987243046",
+    "https://api.soundcloud.com/tracks/1344412528",
+    "https://api.soundcloud.com/tracks/2045334249",
+    "https://api.soundcloud.com/tracks/202624867"
+];
 let randomSong = songs[Math.floor(Math.random() * songs.length)];
 iframe.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(randomSong)}&color=%23ff5500&auto_play=false&visual=true`;
 

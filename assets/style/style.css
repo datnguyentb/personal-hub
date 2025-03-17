@@ -19,7 +19,7 @@
   bottom: 50px;
   right: 120px; }
 
-#soundCloudPlayer {
+iframe {
   display: none; }
 
 .up__page {

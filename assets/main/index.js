@@ -50,6 +50,9 @@ setTimeout(typeEffect, 500); // Khởi động hiệu ứng sau 0.5s
 let audio = document.getElementById("myAudio");
 let toggleButton = document.getElementById("toggleSound");
 
+let songNumber = Math.floor(Math.random() * 6) + 1; // Chọn số ngẫu nhiên từ 1-6
+audio.src = `./assets/audio/background_audio/background_audio_${songNumber}.mp3`;
+
 toggleButton.addEventListener("click", function () {
     if (audio.paused) {
         audio.play();

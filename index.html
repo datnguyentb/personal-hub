@@ -9,101 +9,93 @@
     <link rel="stylesheet" href="./assets/style/style.css">
     <link rel="stylesheet" href="./assets/globalStyle/GlobalStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Load SoundCloud API -->
+    <script src="https://w.soundcloud.com/player/api.js" defer></script>
 </head>
 <body>
     <div id="main">
-        <audio id="myAudio"></audio>
+        <iframe id="soundCloudPlayer" width="100%" height="300" scrolling="no" frameborder="no"
+            allow="autoplay">
+        </iframe>
         <button title="Sound" id="toggleSound" class="bottom-option-btn">
             <i class="fa-solid fa-volume-xmark"></i>
         </button>
         <button title="On top" class="up__page bottom-option-btn">
             <i class="fa-solid fa-arrow-up"></i>
         </button>
-        <div>
-            <div class="page__cover">
-                <div class="left__nav">
-                    <div class="top__content">
-                        <div class="logo-page">
-                            <h3 class="title">success</h3>
-                        </div>
-                        <ul class="list__menu">
-                            <li class="item active"><i class="fa-solid fa-user"></i>Resume</li>
-                            <li class="item"><i class="fa-solid fa-newspaper"></i>News</li>
-                            <li class="item"><i class="fa-solid fa-list-ul"></i>Todo list</li>
-                            <li class="item"><i class="fa-solid fa-calendar-days"></i>calendar</li>
-                            <li class="item"><i class="fa-solid fa-gear"></i>setting</li>
-                        </ul>
+        
+        <div class="page__cover">
+            <div class="left__nav">
+                <div class="top__content">
+                    <div class="logo-page">
+                        <h3 class="title">success</h3>
                     </div>
-                    <div class="pic__art">
-                        <img src="./assets/imgs/pic-art-2.png" alt="">
+                    <ul class="list__menu">
+                        <li class="item active"><i class="fa-solid fa-user"></i>Resume</li>
+                        <li class="item"><i class="fa-solid fa-newspaper"></i>News</li>
+                        <li class="item"><i class="fa-solid fa-list-ul"></i>Todo list</li>
+                        <li class="item"><i class="fa-solid fa-calendar-days"></i>calendar</li>
+                        <li class="item"><i class="fa-solid fa-gear"></i>setting</li>
+                    </ul>
+                </div>
+                <div class="pic__art">
+                    <img src="./assets/imgs/pic-art-2.png" alt="">
+                </div>
+            </div>
+            <div class="content__box resume__content">
+                <div class="title-box">
+                    <div class="title">
+                        <h3 class="typing-container" id="typing"></h3>
+                    </div>
+                    <div class="more__option">
+                        <div class="search">
+                            <input placeholder="Search..."/>
+                            <div class="search__btn">
+                                <button class="search-icon">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="logout_icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="content__box resume__content">
-                    <div class="title-box">
-                        <div class="title">
-                            <h3 class="typing-container" id="typing"></h3></h3>
-                        </div>
-                        <div class="more__option">
-                            <div class="search">
-                                <input placeholder="Search..."/>
-                                <div class="search__btn">
-                                    <button class="search-icon">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
+                <div class="main__content">
+                    <div class="primary__content">
+                        <div class="profile__inf">
+                            <div class="profile__inf_main">
+                                <div class="avatar">
+                                    <img src="./assets/imgs/pic-art.png" alt="avatar">
                                 </div>
-                            </div>
-                            <div class="logout_icon">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main__content">
-                        <div class="primary__content">
-                            <div class="profile__inf">
-                                <div class="profile__inf_main">
-                                    <div class="avatar">
-                                        <img src="./assets/imgs/pic-art.png" alt="avatar">
-                                    </div>
-                                    <div class="my__inf">
-                                        <h3 class="name">Nguyen Tien Dat</h3>
-                                        <p class="title_inf date_of_birth">
-                                            Date of birth: 
-                                            <span>17, April 1999</span>
-                                        </p>
-                                        <p class="title_inf country">
-                                            Country: 
-                                            <span>Vu Thu, Thai Binh</span>
-                                        </p>
-                                        <p class="title_inf phone__number">
-                                            Phone number: 
-                                            <a href="tel:+84866743122"><span>0866743122</span></a>
-                                        </p>
-                                        <p class="title_inf email">
-                                            E-mail: 
-                                            <a href="mailto:dat.nt170499@email.com"><span>dat.nt170499@gmail.comm</span></a>
-                                        </p>
-                                        <ul class="social__list">
-                                            <li title="Facebook" class="social__icon fb-icon"><a target="_blank" href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a></li>
-                                            <li title="Instagram" class="social__icon ins-icon"><a target="_blank"  href="https://www.facebook.com/"><i class="fa-brands fa-square-instagram"></i></a></li>
-                                            <li title="Youtube" class="social__icon yt-icon"><a target="_blank"  href="https://www.facebook.com/"><i class="fa-brands fa-youtube"></i></a></li>
-                                            <li title="Tiktok" class="social__icon tiktok-icon"><a target="_blank"  href="https://www.facebook.com/"><i class="fa-brands fa-tiktok"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="edit__icon">
-                                    <i title="Edit" class="fa-solid fa-pen-to-square"></i>
+                                <div class="my__inf">
+                                    <h3 class="name">Nguyen Tien Dat</h3>
+                                    <p class="title_inf date_of_birth">Date of birth: <span>17, April 1999</span></p>
+                                    <p class="title_inf country">Country: <span>Vu Thu, Thai Binh</span></p>
+                                    <p class="title_inf phone__number">Phone number: 
+                                        <a href="tel:+84866743122"><span>0866743122</span></a>
+                                    </p>
+                                    <p class="title_inf email">E-mail: 
+                                        <a href="mailto:dat.nt170499@email.com"><span>dat.nt170499@gmail.com</span></a>
+                                    </p>
+                                    <ul class="social__list">
+                                        <li title="Facebook" class="social__icon fb-icon"><a target="_blank" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                        <li title="Instagram" class="social__icon ins-icon"><a target="_blank" href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
+                                        <li title="Youtube" class="social__icon yt-icon"><a target="_blank" href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                                        <li title="Tiktok" class="social__icon tiktok-icon"><a target="_blank" href="#"><i class="fa-brands fa-tiktok"></i></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="ads__content">
-
-                        </div>
+                        <div class="ads__content"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <script src="./assets/main/snow.js"></script>
+    <script src="./assets/main/index.js"></script>
 </body>
-<script src="./assets/main/snow.js"></script>
-<script src="./assets/main/index.js"></script>
 </html>

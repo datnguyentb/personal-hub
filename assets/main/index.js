@@ -1,29 +1,30 @@
-var menu_list = document.querySelectorAll(".left__nav li.item");
-menu_list.forEach((item) => {
-    item.addEventListener("click", () => {
-        // Xóa lớp "active" khỏi tất cả các mục
-        menu_list.forEach((el) => el.classList.remove("active"));
+document.addEventListener("DOMContentLoaded", function () {
+console.log("DOM fully loaded and parsed.");
 
-        // Thêm lớp "active" vào mục được nhấp
+// 📌 Menu Active State
+let menuList = document.querySelectorAll(".left__nav li.item");
+menuList.forEach((item) => {
+    item.addEventListener("click", () => {
+        menuList.forEach((el) => el.classList.remove("active"));
         item.classList.add("active");
     });
 });
 
-//typing
-const textArray = ["Hello, welcome to my website!",
-            "Hope you're having a great day!",
-            "Thank you for stopping by!",
-            "Wishing you a wonderful experience!",
-            "Enjoy your time here!"];
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 150; // Tốc độ gõ chữ
-let deleteSpeed = 100; // Tốc độ xóa chữ
-let delayBetweenWords = 500; // Thời gian chờ giữa các từ
+// 📌 Typing Effect
+const textArray = [
+    "Hello, welcome to my website!",
+    "Hope you're having a great day!",
+    "Thank you for stopping by!",
+    "Wishing you a wonderful experience!",
+    "Enjoy your time here!"
+];
+let textIndex = 0, charIndex = 0, isDeleting = false;
+let typingSpeed = 150, deleteSpeed = 100, delayBetweenWords = 1000;
 
 function typeEffect() {
     let typingElement = document.getElementById("typing");
+    if (!typingElement) return; // Tránh lỗi nếu phần tử không tồn tại
+
     let currentText = textArray[textIndex];
 
     if (isDeleting) {
@@ -43,22 +44,40 @@ function typeEffect() {
     setTimeout(typeEffect, isDeleting ? deleteSpeed : typingSpeed);
 }
 
-setTimeout(typeEffect, 500); // Khởi động hiệu ứng sau 0.5s
+setTimeout(typeEffect, 500);
 
-
-//Nhac nen
-let audio = document.getElementById("myAudio");
+// 📌 SoundCloud Integration
 let toggleButton = document.getElementById("toggleSound");
+let iframe = document.getElementById("soundCloudPlayer");
 
-let songNumber = Math.floor(Math.random() * 6) + 1; // Chọn số ngẫu nhiên từ 1-6
-audio.src = `./assets/audio/background_audio/background_audio_${songNumber}.mp3`;
+if (!iframe || !toggleButton) {
+    console.warn("SoundCloud elements are missing.");
+    return;
+}
 
-toggleButton.addEventListener("click", function () {
-    if (audio.paused) {
-        audio.play();
-        toggleButton.innerHTML = `<i class="fa-solid fa-volume-high"></i>`; // Icon loa bật
+let songs = ["https://api.soundcloud.com/tracks/339979427"];
+let randomSong = songs[Math.floor(Math.random() * songs.length)];
+iframe.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(randomSong)}&color=%23ff5500&auto_play=false&visual=true`;
+
+let isPlaying = false;
+let widget;
+
+iframe.onload = function () {
+    if (typeof SC !== "undefined" && SC.Widget) {
+        widget = SC.Widget(iframe);
+
+        widget.bind(SC.Widget.Events.READY, function () {
+            console.log("SoundCloud widget is ready!");
+        });
+
+        toggleButton.addEventListener("click", function () {
+            if (!widget) return;
+            isPlaying ? widget.pause() : widget.play();
+            toggleButton.innerHTML = isPlaying ? `<i class="fa-solid fa-volume-xmark"></i>` : `<i class="fa-solid fa-volume-high"></i>`;
+            isPlaying = !isPlaying;
+        });
     } else {
-        audio.pause();
-        toggleButton.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`; // Icon loa tắt
+        console.error("SoundCloud API chưa sẵn sàng");
     }
+};
 });

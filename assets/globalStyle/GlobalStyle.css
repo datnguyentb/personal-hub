@@ -39,4 +39,7 @@ button {
   user-select: none;
   pointer-events: none; }
 
+iframe#soundCloudPlayer {
+  display: none; }
+
 /*# sourceMappingURL=GlobalStyle.css.map */
